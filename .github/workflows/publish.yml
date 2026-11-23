@@ -1,5 +1,4 @@
-# Releases the CLI on every push to main that changes what it ships, then stages it on npm with
-# provenance: a maintainer approves it before anyone can install it. The version is the last one
+# Releases the CLI on every push to main that changes what it ships, then stages it on npm: a maintainer approves it before anyone can install it. The version is the last one
 # (npm or a tag), increased by a patch. Run it by hand (Actions >
 # Publish > Run workflow) to choose a minor or a major increment.
 #
@@ -42,7 +41,8 @@ jobs:
     permissions:
       # The tag and the GitHub release.
       contents: write
-      # The OIDC token npm exchanges for publishing and signs the provenance with.
+      # The OIDC token npm exchanges for publishing. Add --provenance to `npm stage publish` once
+      # the repository is public: npm signs provenance only for a public source repository.
       id-token: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -99,7 +99,7 @@ jobs:
         run: |
           set -euo pipefail
           npm version "$VERSION" --no-git-tag-version
-          npm stage publish --provenance --access public
+          npm stage publish --access public
           git tag "v$VERSION"
           git push origin "v$VERSION"
           gh release create "v$VERSION" --generate-notes --verify-tag
