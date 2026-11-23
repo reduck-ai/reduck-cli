@@ -1,0 +1,59 @@
+{
+  "name": "@reduck-ai/cli",
+  "version": "0.0.0",
+  "description": "CLI for Reduck: run scripts against your browser, through the Reduck MCP.",
+  "license": "MIT",
+  "author": "Reduck AI <contact@reduck.ai> (https://reduck.ai)",
+  "homepage": "https://github.com/reduck-ai/reduck-cli#readme",
+  "bugs": "https://github.com/reduck-ai/reduck-cli/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reduck-ai/reduck-cli.git"
+  },
+  "keywords": [
+    "reduck",
+    "browser-automation",
+    "cli",
+    "ai",
+    "rpa"
+  ],
+  "type": "module",
+  "bin": {
+    "reduck": "./dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@11.28.8",
+  "scripts": {
+    "build": "pkgroll --target=node22 --sourcemap --clean-dist",
+    "dev": "pkgroll --target=node22 --sourcemap --watch",
+    "check": "tsc --noEmit && tsx scripts/readme.ts --check",
+    "readme": "tsx scripts/readme.ts",
+    "test": "node --import tsx --test \"tests/*.test.ts\"",
+    "smoke:auth": "tsx scripts/smoke_auth.ts",
+    "smoke:cli": "tsx scripts/smoke_cli.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@reduck-ai/sdk": "^2.0.0",
+    "commander": "15.1.0",
+    "semver": "7.8.6"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "22.0.7",
+    "@types/node": "22.20.5",
+    "@types/semver": "7.8.0",
+    "esbuild": "0.28.2",
+    "pkgroll": "2.29.1",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3"
+  }
+}

@@ -1,0 +1,9 @@
+{
+	"extends": "@tsconfig/node22/tsconfig.json",
+	"compilerOptions": {
+		// pkgroll emits; tsc is only ever the type checker here. Without this a bare
+		// `tsc` writes .js files next to the sources instead of into dist/.
+		"noEmit": true
+	},
+	"include": ["src"]
+}
