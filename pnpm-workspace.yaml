@@ -1,2 +1,6 @@
 allowBuilds:
     esbuild: true
+# Our own package, published from reduck-ai/reduck-sdk after a maintainer's approval: the CLI takes
+# a new version as soon as it is out.
+minimumReleaseAgeExclude:
+    - "@reduck-ai/sdk"
