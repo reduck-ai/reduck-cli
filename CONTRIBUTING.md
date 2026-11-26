@@ -63,6 +63,6 @@ publishes a patch of the version that npm holds. For a minor or a major
 version, run **Publish** by hand and choose the increment. The version is not
 committed: npm and the tag `v<version>` hold it.
 
-**Publish** stages the version on npm: it cannot be installed until a
-maintainer approves it, on npmjs.com or with `npm stage approve <id>`
-(`npm stage list` shows the waiting ones). The approval asks for 2FA.
+**Publish** publishes the version on npm, with no approval. Only `main` can
+publish: it takes changes through pull requests only, and the environment
+`npm` accepts a deployment from `main` only.
